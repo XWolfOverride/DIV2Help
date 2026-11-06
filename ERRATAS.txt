@@ -1,0 +1,48 @@
+# Erratas de la ayuda original que corrige esta edición.
+# Formato: página|texto exacto en HELP.DIV|texto corregido|motivo (se muestra al pie de la página)
+# El texto buscado debe aparecer una sola vez en la página; si no, genayuda.cs avisa y no lo aplica.
+# Las páginas se identifican por su número en HELP.DIV.
+
+# Enlaces que llevaban a otra página
+114|La función {#116,get_dist()}|La función {#117,get_dist()}|El enlace a get_dist() llevaba a get_angle().
+114|{#116,get_dist()}) para|{#117,get_dist()}) para|El enlace a get_dist() llevaba a get_angle().
+114|{#114,fget_angle()}|{#113,fget_angle()}|El enlace a fget_angle() llevaba a esta misma página.
+119|{#119,get_distx()}|{#118,get_distx()}|El enlace a get_distx() llevaba a esta misma página.
+131|{#171,write_int()}|{#172,write_int()}|El enlace a write_int() llevaba a write().
+164|{#127,is_play_cd()}|{#127,is_playing_cd()}|La función se llama is_playing_cd().
+170|{#132,load_pcm()} y {#132,load_wav()}|{#134,load_pcm()} y {#134,load_wav()}|Los enlaces a load_pcm() y load_wav() llevaban a load_fpg().
+187|{#186,path_find()}|{#185,path_find()}|El enlace a path_find() llevaba a path_line().
+241|{#253,write_map()}|{#253,write_in_map()}|La función se llama write_in_map().
+248|{#248,atan()}|{#247,atan()}|El enlace a atan() llevaba a atan2().
+258|{#248,free()}|{#257,malloc()}|El «Ver» enlazaba a atan2() con el nombre free(); la función relacionada es malloc().
+1036|(#1050,{&})|({#1050,&})|Enlace mal formado.
+
+# Sintaxis y ejemplos
+179|{set_volume(}<color>|{set_color(}<color>|La sintaxis mostraba el nombre set_volume().
+249|<y1>{,}{)}|<y1>{)}|Sobraba una coma: draw() recibe 8 parámetros.
+183|advance(angle2,4); // Avanzamos dos puntos el proceso|xadvance(angle2,4); // Avanzamos cuatro puntos el proceso|El ejemplo llamaba a advance() con dos parámetros; la función que se quiere mostrar es xadvance().
+
+# Marcado roto (llaves sin cerrar)
+155|offset tabla, 11);|offset tabla, 11);}|Faltaba una llave de cierre en el texto original.
+1104|sound_bits_8;))|sound_bits_8;})|Faltaba una llave de cierre en el texto original.
+1200|{#1416,channel[31]       -|{#1416,channel[31]}       -|Faltaba una llave de cierre en el texto original.
+569|puede aparecer\nla palabra reservada {#1096,TO}.|puede aparecer\nla palabra reservada {#1096,TO}}.|Faltaba una llave de cierre en el texto original.
+
+# Programas de ejemplo que no compilaban (comprobado compilándolos todos)
+1016|id2=mi_proceso(160, 100)\n|id2=mi_proceso(160, 100);\n|Al ejemplo le faltaba el punto y coma tras la llamada al proceso (error de compilación «Esperando [;]»).
+209|BYTE   miletra="a";|BYTE   miletra=97;   // código ASCII de "a"|Un BYTE no puede inicializarse con un literal (error «Valor de BYTE fuera del rango»); se usa su código ASCII.
+210|BYTE   miletra="A";|BYTE   miletra=65;   // código ASCII de "A"|Un BYTE no puede inicializarse con un literal (error «Valor de BYTE fuera del rango»); se usa su código ASCII.
+226|fwrite(OFFSET tabla1,|fwrite(OFFSET mitabla,|El ejemplo usaba el nombre tabla1, que no existe (error «Nombre desconocido»).
+257|POINTER mitabla[1000];  // Puntero a una tabla de 1000 datos|POINTER mitabla[1000];  // Puntero a una tabla de 1000 datos\n    contador;|Faltaba declarar la variable contador (error «Nombre desconocido»).
+258|POINTER mitabla[1000];  // Puntero a una tabla de 1000 datos|POINTER mitabla[1000];  // Puntero a una tabla de 1000 datos\n    contador;|Faltaba declarar la variable contador (error «Nombre desconocido»).
+
+# Descripciones intercambiadas de << y >> (las páginas de cada operador y el compilador dicen lo contrario)
+1005|{#1070, <<}   Rotación a la derecha|{#1070, <<}   Rotación a la izquierda|Las descripciones de << y >> estaban intercambiadas: << rota a la izquierda y >> a la derecha.
+1005|{#1077, >>}   Rotación a la izquierda|{#1077, >>}   Rotación a la derecha|Las descripciones de << y >> estaban intercambiadas: << rota a la izquierda y >> a la derecha.
+1035|{#1070, <<}   Rotación a la derecha|{#1070, <<}   Rotación a la izquierda|Las descripciones de << y >> estaban intercambiadas: << rota a la izquierda y >> a la derecha.
+1035|{#1077, >>}   Rotación a la izquierda|{#1077, >>}   Rotación a la derecha|Las descripciones de << y >> estaban intercambiadas: << rota a la izquierda y >> a la derecha.
+1036|{#1070, <<}   Rotación a la derecha|{#1070, <<}   Rotación a la izquierda|Las descripciones de << y >> estaban intercambiadas: << rota a la izquierda y >> a la derecha.
+1036|{#1077, >>}   Rotación a la izquierda|{#1077, >>}   Rotación a la derecha|Las descripciones de << y >> estaban intercambiadas: << rota a la izquierda y >> a la derecha.
+
+# Paréntesis
+1105|{IF (timer[9]>=500) AND NOT acción_realizada)}|{IF (timer[9]>=500 AND NOT acción_realizada)}|Sobraba un paréntesis en la condición del ejemplo.
