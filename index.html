@@ -7,10 +7,17 @@
   <link rel="stylesheet" href="htaw.css">
   <link rel="stylesheet" href="app.css">
   <style>
-    .web-links { display: flex; flex-direction: column; gap: 4px; font-size: 12.5px; padding: 8px 10px;
-      border: 1px solid var(--htaw-border); border-radius: var(--htaw-radius-large); background: var(--htaw-surface); }
+    .web-links { flex: none; margin: 0 8px 8px; font-size: 12px; border: 1px solid var(--htaw-border);
+      border-radius: var(--htaw-radius); background: var(--htaw-surface); }
+    .web-links summary { list-style: none; display: flex; align-items: center; gap: 6px; padding: 4px 8px;
+      color: var(--htaw-fg-muted); cursor: default; user-select: none; }
+    .web-links summary::-webkit-details-marker { display: none; }
+    .web-links summary::after { content: "\25B4"; margin-left: auto; transition: rotate .15s; }
+    .web-links[open] summary::after { rotate: 180deg; }
+    .web-links summary:hover { color: var(--htaw-fg); }
+    .web-links .body { display: flex; flex-direction: column; gap: 2px; padding: 0 8px 6px; }
     .web-links a { color: var(--htaw-link); text-decoration: none; } .web-links a:hover { text-decoration: underline; }
-    .web-links .muted { font-size: 11.5px; }
+    .web-links .muted { font-size: 11px; line-height: 1.3; }
     button[data-act=save] { display: none; }
   </style>
   <script src="ayuda.js"></script>
@@ -19,11 +26,6 @@
   <div id="app">
     <aside id="side">
       <div class="side-head">
-        <div class="web-links">
-          <a href="AyudaDIV2.htaw" download>&#11015; Descargar la ayuda como app de escritorio (AyudaDIV2.htaw)</a>
-          <a href="https://github.com/XWolfOverride/WolfGlue-htaW/releases/latest" target="_blank" rel="noopener">&#8599; Descargar htaW para Windows</a>
-          <span class="muted">Para abrir el .htaw hace falta <a href="https://github.com/XWolfOverride/WolfGlue-htaW" target="_blank" rel="noopener">htaW</a>: descarga la release o compílalo con un solo comando (autobuild).</span>
-        </div>
         <div class="search">
           <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4.5"/><path d="M10 10l4 4"/></svg>
           <input id="q" type="search" autocomplete="off" spellcheck="false">
@@ -35,6 +37,17 @@
         </div>
       </div>
       <div id="list" class="side-body" tabindex="-1"></div>
+      <details class="web-links" id="webLinks" open>
+        <summary>&#11015; Versión de escritorio (htaW)</summary>
+        <div class="body">
+          <a href="AyudaDIV2.htaw" download>Descargar AyudaDIV2.htaw</a>
+          <a href="https://github.com/XWolfOverride/WolfGlue-htaW/releases/latest" target="_blank" rel="noopener">Descargar htaW para Windows &#8599;</a>
+          <span class="muted">El .htaw se abre con <a href="https://github.com/XWolfOverride/WolfGlue-htaW" target="_blank" rel="noopener">htaW</a> (release o autobuild).</span>
+        </div>
+      </details>
+      <script>(() => { const d = document.getElementById("webLinks");
+        try { if (localStorage.getItem("webLinks") === "0") d.open = false; } catch { }
+        d.addEventListener("toggle", () => { try { localStorage.setItem("webLinks", d.open ? "1" : "0"); } catch { } }); })();</script>
     </aside>
     <div id="split" role="separator" tabindex="0" aria-orientation="vertical"></div>
     <section id="view">
